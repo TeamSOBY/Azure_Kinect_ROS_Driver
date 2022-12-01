@@ -80,7 +80,8 @@ set_target_properties(${PROJECT_NAME}_node PROPERTIES OUTPUT_NAME node PREFIX ""
 #### AZURE KINECT SDK ######
 ############################
 
-message(STATUS "Finding K4A SDK binaries")
+message("Finding K4A SDK binaries")
+message("--------------------------------------------${CMAKE_MODULE_PATH}-----------------------------------------")
 
 # Disable cached locations for K4A SDK binaries.
 # Do this to force the search logic to happen correctly.
@@ -102,9 +103,9 @@ if (k4abt_FOUND)
   message(STATUS "Body Tracking SDK found: compiling support for Body Tracking")
   target_compile_definitions(${PROJECT_NAME}_node PUBLIC K4A_BODY_TRACKING)
   target_compile_definitions(${PROJECT_NAME}_nodelet PUBLIC K4A_BODY_TRACKING)
-  message(STATUS "!!! Body Tracking SDK found: body tracking features will be available !!!")
+  message("!!! Body Tracking SDK found: body tracking features will be available !!!")
 else()
-  message(STATUS "!!! Body Tracking SDK not found: body tracking features will not be available !!!")
+  message("!!! Body Tracking SDK not found: body tracking features will not be available !!!")
 endif()
 if(MSVC AND NOT k4abt_FOUND)
   if(CUDA_SUPPORT)
